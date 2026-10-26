@@ -7,18 +7,19 @@
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div class="app">
+<div class="app home-mode">
   <header class="topbar">
     <div class="brand"><span class="brand-mark">✳</span><span class="brand-word">sprout</span></div>
     <div class="divider"></div>
-    <div class="breadcrumb"><span>내 마인드맵</span><span>›</span><strong>Operating Systems</strong></div>
+    <div class="breadcrumb" id="breadcrumb"><span id="crumbParent">내 마인드맵</span><span>›</span><strong id="crumbTitle">Operating Systems</strong></div>
     <div class="save-state"><span class="save-dot"></span><span id="saveText">변경사항 저장됨</span></div>
     <div class="top-actions">
-      <button class="icon-btn" id="undoBtn" title="실행 취소">↶</button>
-      <button class="icon-btn" id="redoBtn" title="다시 실행">↷</button>
-      <button class="soft-btn" id="importBtn" title="JSON 가져오기">＋ <span>가져오기</span></button>
-      <button class="soft-btn" id="exportBtn">↗ <span>내보내기</span></button>
-      <button class="primary-btn" id="shareBtn">공유 <span>↗</span></button>
+      <button class="icon-btn editor-action" id="undoBtn" title="실행 취소">↶</button>
+      <button class="icon-btn editor-action" id="redoBtn" title="다시 실행">↷</button>
+      <button class="soft-btn editor-action" id="importBtn" title="JSON 가져오기">＋ <span>가져오기</span></button>
+      <button class="soft-btn editor-action" id="exportBtn">↗ <span>내보내기</span></button>
+      <button class="primary-btn editor-action" id="shareBtn">공유 <span>↗</span></button>
+      <button class="primary-btn home-action" id="newMapBtn">＋ <span>새 마인드맵</span></button>
       <input type="file" id="importFile" accept="application/json,.json" hidden>
     </div>
   </header>
@@ -26,22 +27,22 @@
     <aside class="sidebar">
       <div>
         <div class="side-label">WORKSPACE</div>
-        <div class="side-link"><span class="side-icon">⌂</span><span class="side-text">홈</span></div>
-        <div class="side-link active"><span class="side-icon">✳</span><span class="side-text">내 마인드맵</span></div>
-        <div class="side-link"><span class="side-icon">◷</span><span class="side-text">최근 항목</span></div>
+        <button class="side-link" data-view="home"><span class="side-icon">⌂</span><span class="side-text">홈</span></button>
+        <button class="side-link active" data-view="editor"><span class="side-icon">✳</span><span class="side-text">내 마인드맵</span></button>
+        <button class="side-link" data-view="home"><span class="side-icon">◷</span><span class="side-text">최근 항목</span></button>
       </div>
       <div>
         <div class="side-label">RECENT MAPS</div>
-        <div class="map-card">
+        <button class="map-card" id="recentMapCard">
           <div class="mini-map"><div class="mini-node"></div><div class="mini-line"></div><div class="mini-node" style="background:#a2b398"></div></div>
           <strong>Operating Systems</strong><span>Chap. 1 · System Structures</span>
-        </div>
+        </button>
       </div>
       <div class="side-bottom">차근차근 연결하고<br>한눈에 이해하기.</div>
     </aside>
-    <main class="main">
+    <main class="main editor-main">
       <div class="canvas-head">
-        <div class="title-wrap"><h1>Operating Systems <span style="font-size:27.3px;color:#9ba493">✎</span></h1><p>Chap. 1 · Introduction and System Structures</p></div>
+        <div class="title-wrap"><h1 id="canvasTitle">Operating Systems <span style="font-size:27.3px;color:#9ba493">✎</span></h1><p id="canvasSubtitle">Chap. 1 · Introduction and System Structures</p></div>
         <div class="head-spacer"></div>
         <label class="searchbox"><span>⌕</span><input id="searchInput" placeholder="개념 검색..." autocomplete="off"></label>
         <button class="icon-btn" id="fitBtn" title="전체 보기">⤢</button>
@@ -61,6 +62,32 @@
           <span class="tool-sep"></span><button class="tool" id="centerBtn" title="중앙으로">◎</button>
         </div>
       </section>
+    </main>
+    <main class="home-main" id="homeMain" aria-label="Sprout 홈">
+      <div class="home-scroll">
+        <section class="welcome-row">
+          <div>
+            <p class="eyebrow">MONDAY, 26 OCTOBER</p>
+            <h1>좋은 아침이에요, <span>새싹님.</span></h1>
+            <p class="welcome-copy">생각의 가지를 이어 오늘의 배움을 선명하게 정리해 보세요.</p>
+          </div>
+          <button class="quick-create" id="quickCreateBtn"><span class="quick-create-mark">＋</span><span><strong>새 마인드맵</strong><small>빈 캔버스에서 시작하기</small></span><b>→</b></button>
+        </section>
+
+        <section class="continue-card">
+          <div class="continue-art" aria-hidden="true"><i class="branch one"></i><i class="branch two"></i><i class="branch three"></i><span class="seed root-seed">OS</span><span class="seed leaf-a"></span><span class="seed leaf-b"></span><span class="seed leaf-c"></span></div>
+          <div class="continue-copy"><span class="continue-tag">이어서 작업하기</span><h2>Operating Systems</h2><p>Chap. 1 · Introduction and System Structures</p><div class="continue-meta"><span class="avatar">S</span><span>마지막 편집 <strong>12분 전</strong></span><span class="meta-dot"></span><span>노드 32개</span></div></div>
+          <button class="resume-btn" id="resumeBtn">열기 <span>→</span></button>
+        </section>
+
+        <div class="home-section-head"><div><h2>내 마인드맵</h2><p>최근에 만든 생각의 지도예요.</p></div><button class="text-btn" id="viewAllBtn">전체 보기 <span>→</span></button></div>
+        <section class="map-grid">
+          <button class="map-preview active-map" id="openMapPreview"><div class="preview-canvas os-preview"><span>OS</span><i></i><b></b><em></em></div><div class="preview-details"><span class="map-status">최근 편집</span><h3>Operating Systems</h3><p>32개 노드 · 오늘</p></div><span class="more">•••</span></button>
+          <button class="map-preview"><div class="preview-canvas study-preview"><span>Midterm</span><i></i><b></b><em></em></div><div class="preview-details"><span class="map-status soft-status">학습 중</span><h3>Data Structures</h3><p>18개 노드 · 10월 22일</p></div><span class="more">•••</span></button>
+          <button class="map-preview"><div class="preview-canvas idea-preview"><span>Idea</span><i></i><b></b><em></em></div><div class="preview-details"><span class="map-status warm-status">아이디어</span><h3>Side Project</h3><p>9개 노드 · 10월 18일</p></div><span class="more">•••</span></button>
+          <button class="new-map-tile" id="newMapTile"><span>＋</span><strong>새 마인드맵 만들기</strong><small>떠오른 생각을 바로 기록하세요</small></button>
+        </section>
+      </div>
     </main>
     <aside class="inspector" id="inspector">
       <div class="inspector-head"><div><strong>노드 편집</strong><br><span id="nodePath">선택한 개념</span></div><button class="icon-btn" id="closeInspector" style="min-width:56.55px;height:56.55px">×</button></div>

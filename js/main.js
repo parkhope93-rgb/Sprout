@@ -34,7 +34,7 @@ const initial = [
 const STORE_KEY = 'sprout-mindmap-v2';
 const UI = 1.95;
 const MAX_LEVEL = 5;
-let data = structuredClone(initial), selected = 'chap1', collapsed = new Set(), positions = {}, zoom = .82, pan = { x: 70 * UI, y: 55 * UI }, dragging = false, dragStart = null, history = [], future = [], examMode = false;
+let data = structuredClone(initial), selected = 'chap1', collapsed = new Set(), positions = {}, zoom = .82, pan = { x: 70 * UI, y: 55 * UI }, dragging = false, dragStart = null, history = [], future = [], examMode = false, mapTitle = 'Operating Systems';
 const $ = s => document.querySelector(s), viewport = $('#viewport'), world = $('#world');
 function persist() { try { localStorage.setItem(STORE_KEY, JSON.stringify({ data, collapsed: [...collapsed], selected, updatedAt: new Date().toISOString() })); $('#saveText').textContent = '자동 저장됨' } catch (e) { $('#saveText').textContent = '브라우저 저장을 사용할 수 없음' } }
 function loadSaved() { try { const raw = localStorage.getItem(STORE_KEY); if (raw) { const s = JSON.parse(raw); if (Array.isArray(s.data) && s.data.some(n => n.id === 'os')) { data = s.data; collapsed = new Set(s.collapsed || []); selected = data.some(n => n.id === s.selected) ? s.selected : 'chap1' } } } catch (e) { } }
@@ -122,6 +122,28 @@ function renderInspector() {
 function escapeHtml(s) { return String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])) }
 function markUnsaved() { $('#saveText').textContent = '변경사항 있음'; clearTimeout(markUnsaved.timer); markUnsaved.timer = setTimeout(persist, 500) }
 function showToast(msg) { const t = $('#toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(showToast.timer); showToast.timer = setTimeout(() => t.classList.remove('show'), 1800) }
+function setView(view) {
+  const app = document.querySelector('.app'), home = view === 'home';
+  app.classList.toggle('home-mode', home);
+  document.querySelectorAll('.side-link').forEach(link => link.classList.toggle('active', link.dataset.view === view && (link.textContent.includes('홈') || !home)));
+  $('#crumbParent').textContent = home ? '내 공간' : '내 마인드맵';
+  $('#crumbTitle').textContent = home ? '홈' : mapTitle;
+  if (!home) setTimeout(fitMap, 30);
+}
+function createNewMap() {
+  $('#modalTitle').textContent = '새 마인드맵 만들기';
+  $('#modalDesc').textContent = '제목을 정하면 빈 캔버스에서 바로 시작할 수 있어요.';
+  $('#modalInput').style.display = 'block'; $('#modalInput').readOnly = false; $('#modalInput').value = '새 마인드맵';
+  const existing = $('#shareUrlDisplay'); if (existing) existing.style.display = 'none';
+  backdrop.classList.add('open'); $('#modalConfirm').textContent = '만들기';
+  $('#modalConfirm').onclick = () => {
+    const title = $('#modalInput').value.trim() || '새 마인드맵';
+    snapshot(); mapTitle = title; data = [{ id: 'os', label: title, parent: null, level: 0, children: [], note: '' }]; collapsed = new Set(); selected = 'os';
+    $('#canvasTitle').innerHTML = `${escapeHtml(title)} <span style="font-size:27.3px;color:#9ba493">✎</span>`; $('#canvasSubtitle').textContent = '생각을 자유롭게 펼쳐 보세요.';
+    backdrop.classList.remove('open'); layout(); renderInspector(); persist(); setView('editor'); showToast('새 마인드맵을 만들었어.');
+  };
+  setTimeout(() => { $('#modalInput').focus(); $('#modalInput').select() }, 30);
+}
 function addChild() { const parent = node(selected); if (!parent) return; if (parent.level >= MAX_LEVEL) { showToast('노드는 5단계까지만 추가할 수 있어.'); return } snapshot(); const id = 'n' + Date.now(); const n = { id, label: '새 개념', parent: parent.id, level: parent.level + 1, children: [], note: '' }; data.push(n); parent.children.push(id); collapsed.delete(parent.id); selected = id; layout(); renderInspector(); setTimeout(() => { const i = $('#labelInput'); i.focus(); i.select() }, 30); persist(); showToast('하위 노드를 추가했어.') }
 function addSibling() { const current = node(selected); if (!current || !current.parent) { showToast('최상위 노드에는 같은 단계 노드를 추가할 수 없어.'); return } snapshot(); const parent = node(current.parent), id = 'n' + Date.now(); const n = { id, label: '새 개념', parent: parent.id, level: current.level, children: [], note: '', status: 'not-started' }; data.push(n); parent.children.push(id); collapsed.delete(parent.id); selected = id; layout(); renderInspector(); setTimeout(() => { const i = $('#labelInput'); i.focus(); i.select() }, 30); persist(); showToast('같은 단계에 노드를 추가했어.') }
 function toggleCollapse() { const n = node(selected); if (!n.children.length) { showToast('접거나 펼칠 하위 노드가 없어.'); return } snapshot(); if (collapsed.has(n.id)) collapsed.delete(n.id); else collapsed.add(n.id); layout(); renderInspector() }
@@ -130,6 +152,9 @@ function duplicateNode() { const n = node(selected); if (!n.parent) { showToast(
 function undo() { if (!history.length) { showToast('되돌릴 작업이 없어.'); return } future.push(JSON.stringify({ data, collapsed: [...collapsed] })); const s = JSON.parse(history.pop()); data = s.data; collapsed = new Set(s.collapsed); if (!node(selected)) selected = 'chap1'; layout(); renderInspector(); persist(); showToast('실행을 취소했어.') }
 function redo() { if (!future.length) { showToast('다시 실행할 작업이 없어.'); return } history.push(JSON.stringify({ data, collapsed: [...collapsed] })); const s = JSON.parse(future.pop()); data = s.data; collapsed = new Set(s.collapsed); layout(); renderInspector(); persist(); showToast('다시 실행했어.') }
 $('#addNodeBtn').onclick = addChild; $('#addSiblingBtn').onclick = addSibling; $('#collapseBtn').onclick = toggleCollapse; $('#zoomIn').onclick = () => { zoom = Math.min(1.5, zoom + .1); applyTransform() }; $('#zoomOut').onclick = () => { zoom = Math.max(.35, zoom - .1); applyTransform() }; $('#fitBtn').onclick = fitMap; $('#centerBtn').onclick = centerMap; $('#undoBtn').onclick = undo; $('#redoBtn').onclick = redo; $('#panelBtn').onclick = () => $('#inspector').classList.toggle('mobile-open'); $('#closeInspector').onclick = () => $('#inspector').classList.remove('mobile-open');
+document.querySelectorAll('.side-link').forEach(link => link.addEventListener('click', () => setView(link.dataset.view)));
+$('#recentMapCard').onclick = () => setView('editor'); $('#resumeBtn').onclick = () => setView('editor'); $('#openMapPreview').onclick = () => setView('editor'); $('#viewAllBtn').onclick = () => document.querySelector('.map-grid').scrollIntoView({ behavior: 'smooth', block: 'center' });
+$('#newMapBtn').onclick = createNewMap; $('#quickCreateBtn').onclick = createNewMap; $('#newMapTile').onclick = createNewMap;
 $('#searchInput').addEventListener('input', () => renderNodes(visibleNodes()));
 viewport.addEventListener('pointerdown', e => { if (e.target.closest('.node')) return; dragging = true; dragStart = { x: e.clientX - pan.x, y: e.clientY - pan.y }; viewport.classList.add('dragging'); viewport.setPointerCapture(e.pointerId) });
 viewport.addEventListener('pointermove', e => { if (!dragging) return; pan.x = e.clientX - dragStart.x; pan.y = e.clientY - dragStart.y; applyTransform() });
@@ -144,4 +169,4 @@ $('#importFile').addEventListener('change', async e => { const file = e.target.f
 function loadSharedHash() { try { if (location.hash.startsWith('#map=')) { const obj = JSON.parse(decodeURIComponent(escape(atob(location.hash.slice(5))))); if (Array.isArray(obj.data) && obj.data.some(n => n.id === 'os')) { data = obj.data; collapsed = new Set(obj.collapsed || []); selected = 'chap1'; persist(); history.replaceState(null, '', location.pathname + location.search); showToast('공유된 마인드맵을 불러왔어.') } } } catch (e) { showToast('공유 링크를 읽을 수 없어.') } }
 window.addEventListener('resize', () => { layout(); fitMap() });
 document.addEventListener('keydown', e => { if (e.target.matches('input,textarea')) { if (e.key === 'Escape') e.target.blur(); return } if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'z') { e.preventDefault(); undo() } else if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'y') { e.preventDefault(); redo() } else if (e.key === 'Delete' || e.key === 'Backspace') { deleteNode() } else if (e.key === 'Escape') { $('#inspector').classList.remove('mobile-open') } });
-loadSaved(); loadSharedHash(); normalizeLevels(); data.forEach(n => { if (!n.status) n.status = 'not-started' }); layout(); renderInspector(); persist(); setTimeout(fitMap, 100); document.fonts.ready.then(() => { layout(); fitMap() });
+loadSaved(); loadSharedHash(); normalizeLevels(); data.forEach(n => { if (!n.status) n.status = 'not-started' }); layout(); renderInspector(); persist(); setView('home'); setTimeout(() => { if (!document.querySelector('.app').classList.contains('home-mode')) fitMap() }, 100); document.fonts.ready.then(() => { layout(); if (!document.querySelector('.app').classList.contains('home-mode')) fitMap() });
