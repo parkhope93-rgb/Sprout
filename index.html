@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sprout — Mindmap Prototype</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">✳</span><span class="brand-word">sprout</span></div>
+    <div class="divider"></div>
+    <div class="breadcrumb"><span>내 마인드맵</span><span>›</span><strong>Operating Systems</strong></div>
+    <div class="save-state"><span class="save-dot"></span><span id="saveText">변경사항 저장됨</span></div>
+    <div class="top-actions">
+      <button class="icon-btn" id="undoBtn" title="실행 취소">↶</button>
+      <button class="icon-btn" id="redoBtn" title="다시 실행">↷</button>
+      <button class="soft-btn" id="importBtn" title="JSON 가져오기">＋ <span>가져오기</span></button>
+      <button class="soft-btn" id="exportBtn">↗ <span>내보내기</span></button>
+      <button class="primary-btn" id="shareBtn">공유 <span>↗</span></button>
+      <input type="file" id="importFile" accept="application/json,.json" hidden>
+    </div>
+  </header>
+  <div class="workspace">
+    <aside class="sidebar">
+      <div>
+        <div class="side-label">WORKSPACE</div>
+        <div class="side-link"><span class="side-icon">⌂</span><span class="side-text">홈</span></div>
+        <div class="side-link active"><span class="side-icon">✳</span><span class="side-text">내 마인드맵</span></div>
+        <div class="side-link"><span class="side-icon">◷</span><span class="side-text">최근 항목</span></div>
+      </div>
+      <div>
+        <div class="side-label">RECENT MAPS</div>
+        <div class="map-card">
+          <div class="mini-map"><div class="mini-node"></div><div class="mini-line"></div><div class="mini-node" style="background:#a2b398"></div></div>
+          <strong>Operating Systems</strong><span>Chap. 1 · System Structures</span>
+        </div>
+      </div>
+      <div class="side-bottom">차근차근 연결하고<br>한눈에 이해하기.</div>
+    </aside>
+    <main class="main">
+      <div class="canvas-head">
+        <div class="title-wrap"><h1>Operating Systems <span style="font-size:21px;color:#9ba493">✎</span></h1><p>Chap. 1 · Introduction and System Structures</p></div>
+        <div class="head-spacer"></div>
+        <label class="searchbox"><span>⌕</span><input id="searchInput" placeholder="개념 검색..." autocomplete="off"></label>
+        <button class="icon-btn" id="fitBtn" title="전체 보기">⤢</button>
+        <button class="icon-btn" id="panelBtn" title="편집 패널">☷</button>
+      </div>
+      <section class="canvas-shell" id="canvasShell">
+        <div class="viewport" id="viewport">
+          <div class="world" id="world"><svg id="connectors"></svg><div id="nodes"></div></div>
+        </div>
+        <div class="toast" id="toast"></div>
+        <div class="canvas-tools">
+          <button class="tool" id="addNodeBtn" title="하위 노드 추가">＋ <span class="tool-label">노드 추가</span></button>
+          <button class="tool" id="addSiblingBtn" title="같은 단계 노드 추가">↔ <span class="tool-label">형제 노드</span></button>
+          <button class="tool" id="collapseBtn" title="선택 노드 접기/펼치기">⌄ <span class="tool-label">접기</span></button>
+          <span class="tool-sep"></span>
+          <button class="tool" id="zoomOut">−</button><span class="zoom-readout" id="zoomReadout">100%</span><button class="tool" id="zoomIn">＋</button>
+          <span class="tool-sep"></span><button class="tool" id="centerBtn" title="중앙으로">◎</button>
+        </div>
+      </section>
+    </main>
+    <aside class="inspector" id="inspector">
+      <div class="inspector-head"><div><strong>노드 편집</strong><br><span id="nodePath">선택한 개념</span></div><button class="icon-btn" id="closeInspector" style="min-width:43.5px;height:43.5px">×</button></div>
+      <div id="inspectorContent" class="inspector-content">
+        <div class="empty-inspector"><div class="empty-icon">✳</div>노드를 선택하면<br>여기에서 내용을 편집할 수 있어.</div>
+      </div>
+    </aside>
+  </div>
+</div>
+<div class="modal-backdrop" id="modalBackdrop"><div class="modal"><h2 id="modalTitle">공유하기</h2><p id="modalDesc">이 마인드맵을 공유할 준비가 됐어.</p><input class="field" id="modalInput" value="Operating Systems" style="margin-bottom:27px"><div class="modal-actions"><button class="soft-btn" id="modalCancel">취소</button><button class="primary-btn" id="modalConfirm">확인</button></div></div></div>
+<script src="js/main.js"></script>
+</body>
+</html>
