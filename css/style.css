@@ -11,8 +11,8 @@
   --ink: #28362b;
   --muted: #858d81;
   --border: #e6e8e0;
-  --shadow: 0 12px 36px rgba(45, 62, 43, .07);
-  --radius: 24px;
+  --shadow: 0 15.6px 46.8px rgba(45, 62, 43, .07);
+  --radius: 31.2px;
 }
 
 * {
@@ -40,19 +40,19 @@ button {
 
 .app {
   height: 100vh;
-  min-height: 900px;
+  min-height: 100vh;
   display: flex;
   flex-direction: column
 }
 
 .topbar {
-  height: 108px;
+  height: 140.4px;
   display: flex;
   align-items: center;
-  gap: 27px;
-  padding: 0 42px;
+  gap: 35.1px;
+  padding: 0 54.6px;
   background: rgba(255, 254, 250, .92);
-  border-bottom: 1.5px solid var(--border);
+  border-bottom: 1.95px solid var(--border);
   z-index: 5;
   overflow: hidden
 }
@@ -60,46 +60,46 @@ button {
 .brand {
   display: flex;
   align-items: center;
-  gap: 13.5px;
+  gap: 17.55px;
   font-weight: 700;
-  font-size: 27px;
-  letter-spacing: -0.75px;
+  font-size: 35.1px;
+  letter-spacing: -0.975px;
   color: var(--forest);
   white-space: nowrap;
   flex-shrink: 0
 }
 
 .brand-mark {
-  width: 46.5px;
-  height: 46.5px;
-  border-radius: 16.5px;
+  width: 60.45px;
+  height: 60.45px;
+  border-radius: 21.45px;
   background: var(--forest);
   display: grid;
   place-items: center;
   color: #fff;
-  font-size: 27px
+  font-size: 35.1px
 }
 
 .divider {
-  height: 39px;
-  width: 1.5px;
+  height: 50.7px;
+  width: 1.95px;
   background: var(--border)
 }
 
 .breadcrumb {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 19.5px;
   min-width: 0;
   color: var(--muted);
-  font-size: 19.5px;
+  font-size: 25.35px;
   white-space: nowrap;
   overflow: hidden
 }
 
 .breadcrumb strong {
   color: var(--ink);
-  font-size: 21px;
+  font-size: 27.3px;
   font-weight: 600;
   overflow: hidden;
   text-overflow: ellipsis
@@ -109,40 +109,40 @@ button {
   margin-left: auto;
   display: flex;
   align-items: center;
-  gap: 10.5px;
-  font-size: 18px;
+  gap: 13.65px;
+  font-size: 23.4px;
   color: #7c8977;
   white-space: nowrap;
   flex-shrink: 0
 }
 
 .save-dot {
-  width: 10.5px;
-  height: 10.5px;
+  width: 13.65px;
+  height: 13.65px;
   border-radius: 50%;
   background: #8ca681
 }
 
 .top-actions {
   display: flex;
-  gap: 12px;
+  gap: 15.6px;
   flex-shrink: 0
 }
 
 .icon-btn,
 .soft-btn {
-  height: 54px;
-  min-width: 54px;
-  border: 1.5px solid var(--border);
-  border-radius: 18px;
+  height: 70.2px;
+  min-width: 70.2px;
+  border: 1.95px solid var(--border);
+  border-radius: 23.4px;
   background: var(--paper);
   color: #52604f;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10.5px;
-  padding: 0 16.5px;
-  font-size: 19.5px;
+  gap: 13.65px;
+  padding: 0 21.45px;
+  font-size: 25.35px;
   transition: .18s;
   white-space: nowrap;
   flex-shrink: 0
@@ -157,16 +157,16 @@ button {
 .primary-btn {
   background: var(--forest);
   color: white;
-  border: 1.5px solid var(--forest);
-  border-radius: 18px;
-  padding: 0 22.5px;
-  height: 55.5px;
-  font-size: 19.5px;
+  border: 1.95px solid var(--forest);
+  border-radius: 23.4px;
+  padding: 0 29.25px;
+  height: 72.15px;
+  font-size: 25.35px;
   font-weight: 600;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10.5px;
+  gap: 13.65px;
   white-space: nowrap;
   flex-shrink: 0
 }
@@ -182,35 +182,35 @@ button {
 }
 
 .sidebar {
-  width: 330px;
+  width: 429px;
   flex-shrink: 0;
-  border-right: 1.5px solid var(--border);
+  border-right: 1.95px solid var(--border);
   background: #fdfcf9;
-  padding: 34.5px 21px;
+  padding: 44.85px 27.3px;
   display: flex;
   flex-direction: column;
-  gap: 37.5px
+  gap: 48.75px
 }
 
 .side-label {
-  font-size: 15px;
-  letter-spacing: 1.95px;
+  font-size: 19.5px;
+  letter-spacing: 2.535px;
   color: #9aa193;
   font-weight: 700;
-  padding: 0 18px;
-  margin-bottom: 12px
+  padding: 0 23.4px;
+  margin-bottom: 15.6px
 }
 
 .side-link {
-  height: 60px;
+  height: 78px;
   display: flex;
   align-items: center;
-  gap: 16.5px;
-  padding: 0 18px;
-  border-radius: 18px;
+  gap: 21.45px;
+  padding: 0 23.4px;
+  border-radius: 23.4px;
   color: #6f796b;
-  font-size: 19.5px;
-  margin-bottom: 4.5px
+  font-size: 25.35px;
+  margin-bottom: 5.85px
 }
 
 .side-link.active {
@@ -220,32 +220,32 @@ button {
 }
 
 .side-link .side-icon {
-  font-size: 24px;
-  width: 27px;
+  font-size: 31.2px;
+  width: 35.1px;
   text-align: center
 }
 
 .map-card {
-  border: 1.5px solid #e4e8df;
+  border: 1.95px solid #e4e8df;
   background: #f5f7f1;
-  border-radius: 21px;
-  padding: 19.5px;
-  margin: 6px 6px 0
+  border-radius: 27.3px;
+  padding: 25.35px;
+  margin: 7.8px 7.8px 0
 }
 
 .map-card .mini-map {
-  height: 78px;
-  border-radius: 13.5px;
+  height: 101.4px;
+  border-radius: 17.55px;
   background: #fffefa;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 15px
+  margin-bottom: 19.5px
 }
 
 .mini-line {
-  width: 42px;
-  height: 3px;
+  width: 54.6px;
+  height: 3.9px;
   background: #c4cebd;
   position: relative
 }
@@ -254,47 +254,47 @@ button {
 .mini-line:after {
   content: "";
   position: absolute;
-  width: 15px;
-  height: 3px;
+  width: 19.5px;
+  height: 3.9px;
   background: #c4cebd;
-  right: -10.5px
+  right: -13.65px
 }
 
 .mini-line:before {
-  top: -12px;
+  top: -15.6px;
   transform: rotate(-35deg)
 }
 
 .mini-line:after {
-  top: 12px;
+  top: 15.6px;
   transform: rotate(35deg)
 }
 
 .mini-node {
-  width: 19.5px;
-  height: 19.5px;
-  border-radius: 7.5px;
+  width: 25.35px;
+  height: 25.35px;
+  border-radius: 9.75px;
   background: var(--forest);
-  margin-right: 7.5px
+  margin-right: 9.75px
 }
 
 .map-card strong {
-  font-size: 18px;
+  font-size: 23.4px;
   display: block
 }
 
 .map-card span {
-  font-size: 16.5px;
+  font-size: 21.45px;
   color: var(--muted);
   display: block;
-  margin-top: 6px
+  margin-top: 7.8px
 }
 
 .side-bottom {
   margin-top: auto;
-  padding: 0 13.5px;
+  padding: 0 17.55px;
   color: #9ba194;
-  font-size: 16.5px;
+  font-size: 21.45px;
   line-height: 1.6
 }
 
@@ -307,23 +307,25 @@ button {
 }
 
 .canvas-head {
-  height: 108px;
+  height: 140.4px;
   display: flex;
   align-items: center;
-  padding: 0 40.5px;
-  gap: 19.5px;
-  flex-shrink: 0
+  padding: 0 52.65px;
+  gap: 25.35px;
+  flex-shrink: 0;
+  min-width: 0;
+  overflow: hidden
 }
 
 .title-wrap {
-  min-width: 180px;
+  min-width: 234px;
   flex: 1 1 auto
 }
 
 .title-wrap h1 {
-  font-size: 28.5px;
-  letter-spacing: -0.75px;
-  margin: 0 0 7.5px;
+  font-size: 37.05px;
+  letter-spacing: -0.975px;
+  margin: 0 0 9.75px;
   font-weight: 700;
   color: #29372b;
   white-space: nowrap;
@@ -333,7 +335,7 @@ button {
 
 .title-wrap p {
   margin: 0;
-  font-size: 18px;
+  font-size: 23.4px;
   color: var(--muted);
   white-space: nowrap;
   overflow: hidden;
@@ -341,21 +343,21 @@ button {
 }
 
 .head-spacer {
-  flex: 0 0 18px
+  flex: 0 0 23.4px
 }
 
 .searchbox {
-  height: 54px;
-  width: 307.5px;
-  min-width: 150px;
+  height: 70.2px;
+  width: 399.75px;
+  min-width: 195px;
   flex-shrink: 1;
-  border: 1.5px solid var(--border);
+  border: 1.95px solid var(--border);
   background: #fffefa;
-  border-radius: 18px;
+  border-radius: 23.4px;
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 0 16.5px;
+  gap: 15.6px;
+  padding: 0 21.45px;
   color: #9ba194
 }
 
@@ -364,7 +366,7 @@ button {
   outline: 0;
   background: transparent;
   width: 100%;
-  font-size: 18px;
+  font-size: 23.4px;
   color: var(--ink)
 }
 
@@ -372,12 +374,12 @@ button {
   position: relative;
   flex: 1;
   min-height: 0;
-  margin: 0 25.5px 24px;
-  border: 1.5px solid #e7e9e1;
-  border-radius: 31.5px;
+  margin: 0 33.15px 31.2px;
+  border: 1.95px solid #e7e9e1;
+  border-radius: 40.95px;
   background-color: #fbfaf7;
-  background-image: radial-gradient(#dce2d7 1.2px, transparent 1.2px);
-  background-size: 28.5px 28.5px;
+  background-image: radial-gradient(#dce2d7 1.56px, transparent 1.56px);
+  background-size: 37.05px 37.05px;
   overflow: hidden
 }
 
@@ -418,19 +420,19 @@ button {
 
 .node {
   position: absolute;
-  min-height: 63px;
-  max-width: 352.5px;
-  min-width: 168px;
-  padding: 16.5px 22.5px;
-  border: 1.5px solid transparent;
-  border-radius: 21px;
+  min-height: 81.9px;
+  max-width: 458.25px;
+  min-width: 218.4px;
+  padding: 21.45px 29.25px;
+  border: 1.95px solid transparent;
+  border-radius: 27.3px;
   display: flex;
   align-items: center;
-  gap: 12px;
-  box-shadow: 0 3px 4.5px rgba(48, 65, 45, .025);
+  gap: 15.6px;
+  box-shadow: 0 3.9px 5.85px rgba(48, 65, 45, .025);
   white-space: normal;
   line-height: 1.3;
-  font-size: 19.5px;
+  font-size: 25.35px;
   font-weight: 500;
   user-select: none;
   cursor: pointer;
@@ -439,30 +441,27 @@ button {
 }
 
 .node:hover {
-  box-shadow: 0 7.5px 21px rgba(48, 65, 45, .10);
-  transform: translateY(-1.5px)
+  box-shadow: 0 9.75px 27.3px rgba(48, 65, 45, .10);
+  transform: translateY(-1.95px)
 }
 
 .node.root {
-  min-width: 174px;
-  min-height: 99px;
+  min-width: 226.2px;
   justify-content: center;
-  border-radius: 34.5px;
+  border-radius: 33.85px;
   background: var(--forest);
   color: #fff;
-  font-size: 28.5px;
+  font-size: 37.05px;
   font-weight: 700;
-  letter-spacing: 0.3px;
-  padding: 27px 36px
+  letter-spacing: 0.39px
 }
 
 .node.level1 {
   background: var(--sage);
   color: #fff;
-  font-size: 22.5px;
+  font-size: 29.25px;
   font-weight: 600;
-  border-radius: 22.5px;
-  padding: 19.5px 25.5px
+  border-radius: 29.25px
 }
 
 .node.level2 {
@@ -477,60 +476,62 @@ button {
   border-color: #e0e7dc
 }
 
+.node.level4 {
+  background: #f7f8f4;
+  color: #3a463c;
+  border-color: #d7e0d2;
+  font-size: 22.1px
+}
+
+.node.level5 {
+  background: #fffefa;
+  color: #445046;
+  border-color: #c5d0c0;
+  font-size: 19.5px
+}
+
 .node.selected {
-  outline: 4.5px solid #d2dfc8;
-  outline-offset: 3px;
-  box-shadow: 0 9px 27px rgba(52, 75, 58, .14)
+  outline: 5.85px solid #d2dfc8;
+  outline-offset: 3.9px;
+  box-shadow: 0 11.7px 35.1px rgba(52, 75, 58, .14)
 }
 
 .node .fold { 
-  font-size: 15px;
+  font-size: 19.5px;
   opacity: .7;
-  margin-left: 3px
-}
-
-.node .status-dot {
-  width: 9px;
-  height: 9px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  background: #c1d3b5
-}
-
-.node.level3 .status-dot {
-  background: #94a88b
+  margin-left: 3.9px
 }
 
 .canvas-tools {
   position: absolute;
-  bottom: 27px;
+  bottom: 35.1px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 4;
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 9px;
-  border: 1.5px solid #e4e7de;
+  gap: 7.8px;
+  padding: 11.7px;
+  border: 1.95px solid #e4e7de;
   background: rgba(255, 254, 250, .94);
-  backdrop-filter: blur(18px);
-  border-radius: 24px;
+  backdrop-filter: blur(23.4px);
+  border-radius: 31.2px;
   box-shadow: var(--shadow)
 }
 
 .tool {
-  height: 52.5px;
-  min-width: 52.5px;
+  height: 68.25px;
+  min-width: 68.25px;
   border: 0;
   background: transparent;
   color: #596754;
-  border-radius: 15px;
+  border-radius: 19.5px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10.5px;
-  padding: 0 15px;
-  font-size: 18px;
+  gap: 13.65px;
+  padding: 0 19.5px;
+  font-size: 23.4px;
   white-space: nowrap;
   flex-shrink: 0
 }
@@ -544,16 +545,16 @@ button {
 }
 
 .tool-sep { 
-  height: 33px;
-  width: 1.5px;
+  height: 42.9px;
+  width: 1.95px;
   background: var(--border);
-  margin: 0 4.5px
+  margin: 0 5.85px
 }
 
 .zoom-readout {
-  font-size: 16.5px;
+  font-size: 21.45px;
   color: #697464;
-  min-width: 57px;
+  min-width: 74.1px;
   text-align: center
 }
 
@@ -561,17 +562,17 @@ button {
 
 .map-tip kbd {
   font: inherit;
-  border: 1.5px solid #dfe3da;
+  border: 1.95px solid #dfe3da;
   background: #fffefa;
-  padding: 4.5px 9px;
-  border-radius: 7.5px;
+  padding: 5.85px 11.7px;
+  border-radius: 9.75px;
   color: #7f8979
 }
 
 .inspector {
-  width: 414px;
+  width: 538.2px;
   flex-shrink: 0;
-  border-left: 1.5px solid var(--border);
+  border-left: 1.95px solid var(--border);
   background: #fffefa;
   display: flex;
   flex-direction: column;
@@ -579,83 +580,84 @@ button {
 }
 
 .inspector-head {
-  height: 108px;
+  height: 140.4px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 28.5px;
-  border-bottom: 1.5px solid #eef0e9;
+  padding: 0 37.05px;
+  border-bottom: 1.95px solid #eef0e9;
   flex-shrink: 0
 }
 
 .inspector-head strong {
-  font-size: 21px
+  font-size: 27.3px
 }
 
 .inspector-head span {
-  font-size: 16.5px;
+  font-size: 21.45px;
   color: var(--muted)
 }
 
 .inspector-content {
-  padding: 31.5px 27px
+  padding: 40.95px 35.1px
 }
 
 .field-label {
   display: block;
-  font-size: 16.5px;
+  font-size: 21.45px;
   font-weight: 700;
   color: #7b8575;
-  margin: 0 0 12px
+  margin: 0 0 15.6px
 }
 
 .field {
   width: 100%;
-  border: 1.5px solid #e1e6dc;
+  border: 1.95px solid #e1e6dc;
   background: #fffefa;
-  border-radius: 16.5px;
-  padding: 16.5px 18px;
+  border-radius: 21.45px;
+  padding: 21.45px 23.4px;
   outline: 0;
-  font-size: 19.5px;
+  font-size: 25.35px;
   color: var(--ink);
-  margin-bottom: 28.5px
+  margin-bottom: 37.05px
 }
 
 .field:focus {
   border-color: #9eb294;
-  box-shadow: 0 0 0 4.5px #eef3e9
+  box-shadow: 0 0 0 5.85px #eef3e9
 }
 
 textarea.field {
   resize: vertical;
-  min-height: 129px;
+  min-height: 167.7px;
   line-height: 1.5
 }
 
 .color-row {
   display: flex;
-  gap: 13.5px;
-  margin: 3px 0 31.5px
+  flex-wrap: wrap;
+  gap: 17.55px;
+  margin: 3.9px 0 40.95px
 }
 
 .swatch {
-  width: 42px;
-  height: 42px;
-  border-radius: 15px;
-  border: 3px solid transparent;
-  outline: 1.5px solid transparent
+  width: 54.6px;
+  height: 54.6px;
+  border-radius: 19.5px;
+  border: 3.9px solid transparent;
+  outline: 1.95px solid transparent
 }
 
 .swatch.active {
-  outline: 3px solid #8ca17e;
-  outline-offset: 3px
+  outline: 3.9px solid #8ca17e;
+  outline-offset: 3.9px
 }
 
 .inspector-actions {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-top: 7.5px
+  gap: 15.6px;
+  margin-top: 9.75px
 }
 
 .inspector-actions button {
@@ -669,29 +671,29 @@ textarea.field {
 }
 
 .empty-inspector {
-  padding: 57px 34.5px;
+  padding: 74.1px 44.85px;
   text-align: center;
   color: #8c9687;
-  font-size: 18px;
+  font-size: 23.4px;
   line-height: 1.7
 }
 
 .empty-icon {
-  font-size: 42px;
-  margin-bottom: 18px
+  font-size: 54.6px;
+  margin-bottom: 23.4px
 }
 
 .toast {
   position: absolute;
-  top: 27px;
+  top: 35.1px;
   left: 50%;
-  transform: translate(-50%, -15px);
+  transform: translate(-50%, -19.5px);
   z-index: 10;
   background: #344b3a;
   color: #fff;
-  padding: 15px 24px;
-  border-radius: 18px;
-  font-size: 18px;
+  padding: 19.5px 31.2px;
+  border-radius: 23.4px;
+  font-size: 23.4px;
   box-shadow: var(--shadow);
   opacity: 0;
   pointer-events: none;
@@ -711,7 +713,7 @@ textarea.field {
   display: none;
   align-items: center;
   justify-content: center;
-  padding: 30px
+  padding: 39px
 }
 
 .modal-backdrop.open {
@@ -719,50 +721,50 @@ textarea.field {
 }
 
 .modal {
-  width: min(585px, 100%);
-  max-height: min(720px, calc(100vh - 48px));
+  width: min(760.5px, 100%);
+  max-height: min(936px, calc(100vh - 62.4px));
   overflow: auto;
   background: #fffefa;
-  border: 1.5px solid var(--border);
-  border-radius: 30px;
-  padding: 34.5px;
-  box-shadow: 0 30px 90px rgba(36, 50, 36, .18)
+  border: 1.95px solid var(--border);
+  border-radius: 39px;
+  padding: 44.85px;
+  box-shadow: 0 39px 117px rgba(36, 50, 36, .18)
 }
 
 .modal h2 {
-  font-size: 27px;
-  margin: 0 0 10.5px
+  font-size: 35.1px;
+  margin: 0 0 13.65px
 }
 
 .modal p {
-  font-size: 18px;
+  font-size: 23.4px;
   color: var(--muted);
-  margin: 0 0 30px;
+  margin: 0 0 39px;
   line-height: 1.6
 }
 
 .modal-actions {
   display: flex;
   justify-content: flex-end;
-  gap: 12px
+  gap: 15.6px
 }
 
 .status-options {
   display: flex;
   flex-direction: column;
-  gap: 10.5px;
-  margin: 3px 0 30px
+  gap: 13.65px;
+  margin: 3.9px 0 39px
 }
 
 .status-option {
-  border: 1.5px solid #e1e6dc;
+  border: 1.95px solid #e1e6dc;
   background: #fffefa;
-  border-radius: 15px;
-  padding: 13.5px 15px;
+  border-radius: 19.5px;
+  padding: 17.55px 19.5px;
   display: flex;
   align-items: center;
-  gap: 13.5px;
-  font-size: 18px;
+  gap: 17.55px;
+  font-size: 23.4px;
   color: #53604f;
   text-align: left
 }
@@ -775,8 +777,8 @@ textarea.field {
 }
 
 .status-pill {
-  width: 12px;
-  height: 12px;
+  width: 15.6px;
+  height: 15.6px;
   border-radius: 50%;
   display: inline-block;
   flex-shrink: 0
@@ -794,44 +796,24 @@ textarea.field {
   background: #7c9a70
 }
 
-.node .status-dot {
-  width: 10.5px;
-  height: 10.5px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  background: #c1d3b5
-}
-
-.node[data-status="not-started"] .status-dot {
-  background: #c7cec2
-}
-
-.node[data-status="studying"] .status-dot {
-  background: #d6a85f
-}
-
-.node[data-status="done"] .status-dot {
-  background: #7c9a70
-}
-
 .modal .share-url {
-  font-size: 16.5px;
+  font-size: 21.45px;
   line-height: 1.5;
   overflow-wrap: anywhere;
   color: #697464;
   background: #f4f6f0;
-  border: 1.5px solid #e3e8de;
-  border-radius: 15px;
-  padding: 15px;
-  margin: -7.5px 0 24px;
-  max-height: 240px;
+  border: 1.95px solid #e3e8de;
+  border-radius: 19.5px;
+  padding: 19.5px;
+  margin: -9.75px 0 31.2px;
+  max-height: 312px;
   overflow: auto
 }
 
 @media(max-width:1100px) {
   .sidebar {
-    width: 97.5px;
-    padding: 30px 13.5px
+    width: 126.75px;
+    padding: 39px 17.55px
   }
 
   .side-label,
@@ -850,7 +832,7 @@ textarea.field {
   }
 
   .inspector {
-    width: 375px
+    width: 487.5px
   }
 
   .brand-word {
@@ -858,15 +840,15 @@ textarea.field {
   }
 
   .searchbox {
-    width: 210px;
-    min-width: 120px
+    width: 273px;
+    min-width: 156px
   }
 }
 
 @media(max-width:760px) {
   .topbar {
-    padding: 0 21px;
-    gap: 15px
+    padding: 0 27.3px;
+    gap: 19.5px
   }
 
   .breadcrumb,
@@ -876,22 +858,22 @@ textarea.field {
   }
 
   .canvas-head {
-    padding: 0 24px
+    padding: 0 31.2px
   }
 
   .searchbox {
-    width: 217.5px
+    width: 282.75px
   }
 
   .inspector {
     position: absolute;
-    right: 24px;
-    top: 126px;
-    bottom: 24px;
+    right: 31.2px;
+    top: 163.8px;
+    bottom: 31.2px;
     z-index: 8;
-    width: 390px;
-    border: 1.5px solid var(--border);
-    border-radius: 27px;
+    width: 507px;
+    border: 1.95px solid var(--border);
+    border-radius: 35.1px;
     box-shadow: var(--shadow);
     display: none
   }
@@ -901,7 +883,7 @@ textarea.field {
   }
 
   .canvas-shell {
-    margin: 0 12px 12px
+    margin: 0 15.6px 15.6px
   }
 
   .map-tip {
@@ -913,6 +895,6 @@ textarea.field {
   }
 
   .tool {
-    padding: 0 13.5px
+    padding: 0 17.55px
   }
 }
